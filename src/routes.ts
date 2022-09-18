@@ -8,6 +8,7 @@ import { FindAllDeliveriesController } from "./modules/clients/useCases/deliveri
 import { CreateDeliveryController } from "./modules/deliveries/useCases/createDelivery/CreateDeliveryController";
 import { FindAllAvailableController } from "./modules/deliveries/useCases/findAllAvailable/FindAllAvailableController";
 import { UpdateDeliverymanController } from "./modules/deliveries/useCases/updateDeliveryman/UpdateDeliverymanController";
+import { UpdateEndDateController } from "./modules/deliveries/useCases/updateEndDate/UpdateEndDateController";
 import { CreateDeliverymanController } from "./modules/deliveryman/useCases/createDeliveryman/CreateDeliverymanController";
 import { FindAllDeliveriesDeliverymanController } from "./modules/deliveryman/useCases/findAllDeliveries/FindAllDeliveriesDeliverymanController";
 
@@ -18,6 +19,7 @@ const createDeliverymanController = new CreateDeliverymanController()
 const createDeliveryController = new CreateDeliveryController()
 const findAllAvailableController = new FindAllAvailableController()
 const updateDeliverymanController = new UpdateDeliverymanController()
+const updateEndDateController = new UpdateEndDateController()
 const findAllDeliveriesClientController = new FindAllDeliveriesController()
 const authenticateClientController = new AuthenticateClientController();
 const authenticateDeliverymanController = new AuthenticateDeliverymanController();
@@ -34,6 +36,7 @@ routes.get("/client/deliveries", ensureAuthenticateClient, findAllDeliveriesClie
 routes.post("/delivery", ensureAuthenticateClient, createDeliveryController.handle)
 routes.get("/delivery/available", ensureAuthenticateDeliveryman, findAllAvailableController.handle)
 routes.put("/delivery/updateDeliveryman/:id", ensureAuthenticateDeliveryman, updateDeliverymanController.handle)
+routes.put("/delivery/updateEndDate/:id", ensureAuthenticateDeliveryman, updateEndDateController.handle)
 
 routes.get("/deliveryman/deliveries", ensureAuthenticateDeliveryman, findAllDeliveriesDeliverymanController.handle)
 
