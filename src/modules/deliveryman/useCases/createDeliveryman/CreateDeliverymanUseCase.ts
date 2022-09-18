@@ -11,7 +11,9 @@ class CreateDeliverymanUseCase {
   async execute({ username, password }: ICreateDeliverymanDTO): Promise<Deliveryman> {
     const deliverymanExist = await prisma.deliveryman.findFirst({
       where: {
-        username
+        username: {
+          equals: username
+        }
       }
     }) 
 
